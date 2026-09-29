@@ -1,0 +1,54 @@
+# Project Statement: Library Management System
+
+## 1. Problem Statement
+
+Small libraries, such as those in schools, colleges, and community centres, often track their books using paper registers or scattered notes. This manual approach causes several problems:
+
+- It is hard to know how many copies of a book are currently available.
+- Searching for a book by title or author is slow.
+- Issued and returned books are recorded inconsistently, so it is easy to lose track of who has borrowed what.
+- Mistakes such as issuing a book with no copies left, or deleting a book that is still on loan, go unnoticed.
+
+There is a need for a simple, easy-to-use program that keeps an accurate record of books and borrowers and prevents these common errors, without requiring complex software or technical expertise.
+
+## 2. Scope of the Project
+
+### In Scope
+
+- Adding books with a title, author, and number of copies.
+- Automatically assigning a unique ID to every book.
+- Displaying all books along with the number of available copies.
+- Searching books by title or author keyword.
+- Issuing a book to a named borrower and recording the return.
+- Deleting a book from the catalogue when no copies are on loan.
+- Validating user input and showing clear error messages.
+- A text-based, menu-driven console interface built in pure Python, with no external libraries.
+
+### Out of Scope
+
+- Permanent data storage (data is kept in memory and is lost when the program exits).
+- A graphical or web-based interface.
+- User accounts, logins, or role-based access.
+- Due dates, late fees, and fines.
+- Barcode scanning, email or SMS notifications, and reporting or analytics.
+- Editing the details of an existing book.
+
+## 3. Target Users
+
+| User | How they use the system |
+|------|-------------------------|
+| **Librarians / library staff** | Add and remove books, issue and return books, and check availability. |
+| **Students and beginner programmers** | Study the code as a simple example of Python functions, dictionaries, lists, loops, and input validation. |
+| **Small institutions** | Use it as a lightweight starting point for tracking a small collection. |
+
+The program assumes users are comfortable typing in a terminal and need no prior programming knowledge to operate it.
+
+## 4. High-Level Features
+
+1. **Book management**: add new books and delete existing ones, with each book identified by a unique ID.
+2. **Catalogue view**: see all books in a formatted table with their available copies.
+3. **Search**: find books quickly by part of the title or author name, ignoring letter case.
+4. **Issue and return**: lend a book to a borrower and record its return, while tracking availability automatically.
+5. **Safety checks**: block invalid actions such as issuing an unavailable book, issuing the same book twice to one borrower, or deleting a book that is still on loan.
+6. **Input validation**: handle empty entries, non-numeric IDs, and invalid menu choices without crashing.
+7. **Simple menu interface**: a numbered menu that is easy to navigate from the terminal.
