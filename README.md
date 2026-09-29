@@ -133,4 +133,8 @@ The project is tested manually through the console. Run the program and follow t
 - Track issue and return dates, with overdue fines.
 - Add unit tests using Python's built-in `unittest` module.
 
+- ## AUTHOR
+- NAME :- PARAS VATS
+- REGISTRATION NUMBER :- 26BCE11515
+
 
