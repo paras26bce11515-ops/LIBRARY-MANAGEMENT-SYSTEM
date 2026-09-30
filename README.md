@@ -1,78 +1,54 @@
 # LIBRARY-MANAGEMENT-SYSTEM
-Library Management System is a software solution that automates operations like tracking book inventory, issuing and returning materials, and managing patron records. It replaces manual paperwork with digital cataloging, real-time tracking, and automated fine calculation, improving library efficiency. 
-A simple, beginner-friendly console application for managing a small library, written in pure Python.
+Library Management System refers to the software that manages the library and supports such operations like inventory management, book issue and return, and storing and maintaining records of library patrons. It makes paperless processes possible, improves tracking, and automates such operations as fine calculation.
 
-## Overview
+A small-scale library management command-line application for a librarian to manage the books catalog, keep track of available books, issue books to borrowers, and accept returns from them.
+## Summary
 
-This project lets a librarian add books, track how many copies are available, search the catalogue, issue books to borrowers, record returns, and delete books, all from a text-based menu in the terminal.
+This project is a library management utility that allows adding books, viewing their records, searching, issuing, and returning books in a command-line interface. It uses only Python built-in libraries and functions.
 
-It uses only Python's built-in features (lists, dictionaries, functions, and loops). There are no external libraries and no other languages. All data is stored in memory, so it resets each time the program exits.
+This utility has several features:
 
-## Features
+- Adding books with titles, authors, and number of copies;
 
-- **Add a book**: store the title, author, and number of copies. Each book gets a unique auto-incremented ID.
-- **View all books**: display a formatted table with ID, title, author, and available copies.
-- **Search for a book**: case-insensitive search by title or author keyword.
-- **Issue a book**: lend a copy to a named borrower, only if copies are available.
-- **Return a book**: record the return of a copy from a specific borrower.
-- **Delete a book**: remove a book from the catalogue, only if no copies are currently issued.
-- **Input validation**: handles empty fields, non-numeric IDs, invalid copy counts, and invalid menu choices without crashing.
-- **Duplicate-issue protection**: the same borrower cannot issue the same book twice.
+- Viewing all books in a catalog;
+- Searching for books by title or author;
+- Issuing a book to a borrower;
+- Returning books;
+- Removing books when they are not issued;
+- Input validation;
 
-## Technologies / Tools Used
+- Preventing the same book issuing to the same person twice.
 
-| Tool | Purpose |
-|------|---------|
-| Python 3.6+ | Core programming language (uses f-strings) |
-| Built-in data structures (`list`, `dict`) | In-memory storage of books and borrowers |
-| Terminal / Command Prompt | Running and interacting with the program |
-
-No third-party packages are required.
-
-## Project Structure
-
-```
+The application is built using only Python 3.6+ built-in libraries.
+The following table describes the tools used in the project:
+Tool Purpose
+Python 3.6+ The main programming language (some features require Python 3.6+)
+Built-in data structures Storage of books and borrowers information
+Terminal\Command prompt Executing the program
+The directory structure looks like this:
 library-management-system/
-├── library.py     # Main program (rename to match your file name)
+├── library.py # the program file (change library.py to your preferable name)
 └── README.md
-```
-
-## Installation & Running the Project
-
-### 1. Prerequisites
-
-Make sure Python 3.6 or newer is installed:
-
-```bash
+## How to install and use the project
+### Prerequisites
+Ensure that Python is installed on your computer:
+Terminal
 python --version
-```
-
-If the command is not found, try `python3 --version`. If Python is missing, download it from https://www.python.org/downloads/
-
-### 2. Get the code
-
-Download or clone the project into a folder:
-
-```bash
-git clone <your-repository-url>
+If you get an error that python is not found, try python3 --version . If Python is not installed, you can download it from https://www.python.org/downloads/
+### Getting the code
+You can download or clone the repository to your local machine:
+Terminal
+git clone
 cd library-management-system
-```
-
-Or simply place the `.py` file in a folder of your choice.
-
-### 3. Run the program
-
-```bash
+Or put the .py file you have downloaded somewhere in your filesystem.
+### Running the program
+Terminal
 python library.py
-```
-
-(Use `python3 library.py` on macOS/Linux if `python` does not work.)
-
-### 4. Use the menu
-
-```
+On macOS/Linux, you might need to use python3 library.py instead
+The program will print the following menu to the terminal:
+Console
 ========================================
-     LIBRARY MANAGEMENT SYSTEM
+LIBRARY MANAGEMENT SYSTEM
 ========================================
 1. Add a Book
 2. View All Books
@@ -82,59 +58,43 @@ python library.py
 6. Delete a Book
 0. Exit
 ========================================
-```
-
-Type the number of an option and press **Enter**. Choose `0` to exit.
-
-## Instructions for Testing
-
-The project is tested manually through the console. Run the program and follow the scenarios below, checking that the actual result matches the expected result.
-
-### Test cases
-
-| # | Scenario | Steps | Expected result |
-|---|----------|-------|-----------------|
-| 1 | Add a valid book | Option 1 → title `Python Basics`, author `John Doe`, copies `3` | Success message with ID 1 |
-| 2 | Empty title or author | Option 1 → leave title blank | Error: title and author cannot be empty |
-| 3 | Invalid copy count | Option 1 → copies `abc`, `0`, or `-2` | Error: copies must be a positive whole number |
-| 4 | View books (empty) | Option 2 before adding any book | "No books available" message |
-| 5 | View books | Add a book, then Option 2 | Table shows the book with correct available copies |
-| 6 | Search (match) | Option 3 → `python` (any letter case) | Matching book(s) listed with availability |
-| 7 | Search (no match) | Option 3 → `zzz` | "No matching books found" |
-| 8 | Issue a book | Option 4 → ID `1`, borrower `Alice` | Success; available copies decrease by 1 |
-| 9 | Issue with invalid ID | Option 4 → `abc` or `99` | Error for non-numeric or unknown ID |
-| 10 | Duplicate issue | Issue book 1 to `Alice` again | Error: already issued to this borrower |
-| 11 | No copies left | Issue a 1-copy book to two different borrowers | Second attempt fails: no copies available |
-| 12 | Return a book | Option 5 → ID `1`, borrower `Alice` | Success; available copies increase by 1 |
-| 13 | Return by wrong borrower | Option 5 → borrower who never issued it | Error: no record of that borrower |
-| 14 | Delete while issued | Issue a book, then Option 6 on it | Error: cannot delete, copies still issued |
-| 15 | Delete a book | Return all copies, then Option 6 | Book deleted successfully |
-| 16 | Invalid menu choice | Enter `9` or `hello` | "Invalid choice" message, menu shown again |
-| 17 | Exit | Enter `0` | Goodbye message and program ends |
-
-### Quick end-to-end check
-
-1. Add a book with 2 copies.
-2. Issue it to two different borrowers, and confirm availability drops to 0.
-3. Try to issue it to a third borrower, which should fail.
-4. Return one copy, and confirm availability is 1.
-5. Try to delete the book, which should fail.
-6. Return the other copy, then delete the book, which should succeed.
-
-## Known Limitations
-
-- Data is not saved to disk; everything is lost when the program closes.
-- Borrowers are identified by name only (names are case-sensitive).
-- No due dates or fines.
-
-## Possible Future Improvements
-
-- Save and load data using a file (JSON or CSV).
-- Track issue and return dates, with overdue fines.
-- Add unit tests using Python's built-in `unittest` module.
+To make a choice, enter the corresponding number and press Enter. To exit, enter 0 .
+The following step-by-step instructions describe how to test the application by performing operations described in the project description and ensuring that the actual results match the expected ones.
+### Testing instructions
+This project uses manual testing. You need to run the program in a terminal/command prompt window and perform the following steps:
+1. Add a Book: Make sure that the record is added successfully with the specified book title, author, and number of copies with a generated ID.
+2. Empty title or author: Ensure that adding a book with empty title or author fails with an appropriate error message.
+3. Copy count validation: Try to add a book with 0, negative number, or non-integer copies to ensure that it is not allowed, and an error is raised.
+4. View All Books: Ensure that when there are no books in the catalog, a message about the emptiness of the catalog is shown.
+5. View All Books: Add a book and then view all books to ensure that it is added and displayed correctly with the specified details.
+6. Search: Search for a book using a book title or author name to ensure that it is found with a case-insensitive match.
+7. Search: Ensure that when searching for a book that is not in the catalog, a message about the absence of the book is displayed.
+8. Issue: Issue a book to make sure that it is issued to the specified borrower, and the number of available copies is updated.
+9. Issue: Try to issue a book with invalid ID (non-integer or not existing) to ensure that it is not issued, and an error is raised.
+10. Issue: Issue the same book to the same borrower again to ensure that it is not issued, and an error is raised.
+11. Issue: Issue a book with only one copy to two different borrowers to ensure that the second issue is denied, since there are no more available copies.
+12. Return: Return a book to ensure that it is marked as returned, and the number of available copies is updated.
+13. Return: Try to return a book that was not issued to a particular borrower to ensure that it is not allowed, and an error is raised.
+14. Delete: Issue a book and then try to delete it to ensure that it cannot be deleted while it is issued.
+15. Delete: Return issued books (if any), then delete a book to ensure that it is deleted successfully.
+16. Invalid Choice: Enter different invalid numbers to ensure that the program shows an error message about an invalid choice.
+17. Exit: Ensure that when you enter 0 , the program displays a goodbye message and exits.
+The following is a brief list of the test steps you can do to check the program's functionality:
+1. Add a book with two copies
+2. Issue this book to two different borrowers and check that the available copies are now zero
+3. Try to issue this book to a third borrower and make sure that it is not allowed
+4. Return one copy of this book and check that the available copies are now one
+5. Try to delete this book and make sure that it is not allowed
+6. Return the second copy of this book and then try to delete it again to make sure that it is now deleted
+### Known limitations
+- Data is not stored on disk; it is kept only in memory and is lost when the program terminates.
+- Libraries are not tracked; a borrower is identified by their name (case-sensitive).
+- Fine calculation and due date tracking are not implemented.
+### Future improvements
+- Add support for saving/loading data to/from a file/disk.
+- Add a feature for fine calculation and tracking of issued/returned dates.
+- Add unit tests using Python's built-in assert statements or the unittest module.
 
 - ## AUTHOR
 - NAME :- PARAS VATS
 - REGISTRATION NUMBER :- 26BCE11515
-
-
